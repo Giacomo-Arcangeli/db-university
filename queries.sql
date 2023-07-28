@@ -20,6 +20,7 @@ SELECT * FROM `students` WHERE `date_of_birth` < '1993-%';
 
 -- 6. Selezionare tutti i corsi di laurea magistrale (38)
 
+SELECT * FROM `degrees` WHERE `level` like 'magistrale';
 
 
 -- 7. Da quanti dipartimenti è composta l'università? (12)
