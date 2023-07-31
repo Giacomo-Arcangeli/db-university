@@ -72,7 +72,11 @@ WHERE `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 -- 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
-
+SELECT `courses`.`name` , 
+FROM `courses`
+JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.course_id`
+JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+WHERE `teachers`.`name` = 'Fulvio';
 
 -- 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
 
@@ -84,6 +88,12 @@ WHERE `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 -- 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 
-
+SELECT T.`name`, T.`surname`
+FROM `departments` AS DIP
+JOIN `degrees` AS D ON D.`department_id` = DIP.`id`
+JOIN `courses` AS C ON C. `degree_id` = D.`id`
+JOIN `course_teacher` AS CT ON CT. `course_id` = C. `id`
+JOIN `teachers` AS T ON CT. `teacher_id` = T .`id`
+WHERE DIP . `name` = 'Dipartimento di Matematica';
 
 -- 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
